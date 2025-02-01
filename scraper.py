@@ -37,3 +37,13 @@ for row in body_rows:
 # Print to verify data extraction
 for row in table_data:
     print(row)
+
+
+import csv
+
+# Save the table data to a CSV file
+with open('premier_league_table.csv', 'w', newline='', encoding='utf-8') as file:
+    writer = csv.writer(file)
+    writer.writerows(table_data)
+
+print("Data has been written to 'premier_league_table.csv'")
