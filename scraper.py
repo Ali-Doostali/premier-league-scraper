@@ -16,4 +16,24 @@ header_row = thead.find("tr")
 headers = [header.find("span").text.strip() if header.find("span") else header.text.strip() for header in header_row.findAll("th")]
 
 # Print headers to verify
-print(headers)
+# print(headers)
+
+# Extract data from the body section of the table (tbody)
+tbody = table.find("tbody")
+body_rows = tbody.findAll("tr")
+
+# Initialize a list to store the table data
+table_data = []
+
+# Append the headers only once as the first row in the table data
+table_data.append(headers)
+
+# Iterate through the rows and extract data
+for row in body_rows:
+    cells = row.findAll("td")
+    row_data = [cell.text.strip() for cell in cells]  # Get text directly from <td>
+    table_data.append(row_data)
+
+# Print to verify data extraction
+for row in table_data:
+    print(row)
